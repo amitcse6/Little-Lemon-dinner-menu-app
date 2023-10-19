@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct Menu: Identifiable {
+struct MenuItem: Identifiable {
     var id = UUID()
+    var price: Double
     var title: String
-    var icon: String
     var category: MenuCategory
-    var items: [Item] 
+    var orderCount: Int
+    var ingredient: Ingredient
+    var icon: String
 }

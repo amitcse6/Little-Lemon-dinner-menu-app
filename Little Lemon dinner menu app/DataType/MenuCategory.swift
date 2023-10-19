@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum MenuCategory {
+    case food
+    case drink
+    case dessert
+}

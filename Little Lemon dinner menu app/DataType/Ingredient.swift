@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+enum Ingredient {
+    case spinach
+    case broccoli
+    case carrot
+    case pasta
+    case tomatoSauce
+}

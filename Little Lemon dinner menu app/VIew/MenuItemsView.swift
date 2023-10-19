@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct MenuItemsView: View {
+    @ObservedObject var viewModel = MenuViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            ScrollView {
+                ForEach(viewModel.menuItemList) { menu in
+                    HStack {
+                        Text(menu.title)
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        VStack(alignment: .trailing) {
+                            Text("5555")
+                            Text("6666")
+                        }
+                    }
+                    .frame(height: 80)
+                    .padding(12)
+                }
+            }
+        }
+        .onAppear(perform: {
+            viewModel.fetchMenuItemList()
+        })
     }
 }
 
