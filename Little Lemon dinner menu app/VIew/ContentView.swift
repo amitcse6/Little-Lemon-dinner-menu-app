@@ -9,10 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            MenuItemsView()
+        NavigationView {
+            VStack {
+                MenuItemsView()
+            }
+            .navigationTitle("Little Lemon")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .padding()
     }
 }
 

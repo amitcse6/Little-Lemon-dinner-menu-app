@@ -15,4 +15,5 @@ struct MenuItem: Identifiable {
     var orderCount: Int
     var ingredient: Ingredient
     var icon: String
+    var isMostPopular: Bool
 }

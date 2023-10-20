@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Ingredient {
+enum Ingredient: String, CaseIterable, Codable {
     case spinach
     case broccoli
     case carrot
