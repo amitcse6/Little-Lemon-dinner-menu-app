@@ -13,7 +13,7 @@ struct MenuItem: Identifiable {
     var title: String
     var category: MenuCategory
     var orderCount: Int
-    var ingredient: Ingredient
+    var ingredients: [Ingredient]
     var icon: String
     var isMostPopular: Bool
 }

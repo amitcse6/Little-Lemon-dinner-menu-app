@@ -10,6 +10,7 @@ import SwiftUI
 struct MenuItemsView: View {
     @ObservedObject var viewModel = MenuViewModel()
     @State private var showSheet = false
+    @State private var showDetailsSheet = false
     
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
@@ -22,23 +23,25 @@ struct MenuItemsView: View {
                             if viewModel.getMenuItemListBy(category: key).count > 0 {
                                 Section(header: headerView(category: key)) {
                                     ForEach(viewModel.getMenuItemListBy(category: key)) { menu in
-                                        HStack {
-                                            VStack {
-                                                Text("Price: \(menu.price)\nPopularity: \(menu.isMostPopular ? "Most" : "Less")")
-                                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                                    .font(.system(size: 12))
-                                                    .foregroundColor(.white)
-                                                    .background(Color.black)
-                                                
-                                                Text("\(menu.title)")
-                                                    .frame(maxWidth: .infinity, minHeight: 20)
-                                                    .font(.system(size: 14))
-                                                    .background(Color.purple)
+                                        NavigationLink(destination: MenuItemDetailsView(item: menu)) {
+                                            HStack {
+                                                VStack {
+                                                    Text("Price: \(menu.price)\nPopularity: \(menu.isMostPopular ? "Most" : "Less")")
+                                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                                        .font(.system(size: 12))
+                                                        .foregroundColor(.white)
+                                                        .background(Color.black)
+                                                    
+                                                    Text("\(menu.title)")
+                                                        .frame(maxWidth: .infinity, minHeight: 20)
+                                                        .font(.system(size: 14))
+                                                        .background(Color.purple)
+                                                }
                                             }
+                                            .frame(width: 100, height: 100, alignment: .center)
+                                            .background(Color.gray)
+                                            .cornerRadius(8)
                                         }
-                                        .frame(width: 100, height: 100, alignment: .center)
-                                        .background(Color.gray)
-                                        .cornerRadius(8)
                                     }
                                 }
                             }

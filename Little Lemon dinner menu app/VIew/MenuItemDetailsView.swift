@@ -8,13 +8,36 @@
 import SwiftUI
 
 struct MenuItemDetailsView: View {
+    var item: MenuItem
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("\(item.title)")
+                .font(.title)
+            Image("Little Lemon logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(maxHeight: 400)
+            Spacer()
+            Text("Price:")
+                .font(.system(size: 20))
+            Text("\(item.price)")
+                .font(.system(size: 12))
+            Text("Ordered:")
+                .font(.system(size: 20))
+            Text("\(1000)")
+                .font(.system(size: 12))
+            Text("Ingredients:")
+                .font(.system(size: 20))
+            Text("\(item.ingredients.map({$0.rawValue}).joined(separator: "\n"))")
+                .font(.system(size: 12))
+            Spacer()
+        }
     }
 }
 
 struct MenuItemDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuItemDetailsView()
+        MenuItemDetailsView(item: MenuItem(price: 10, title: "Dessert 1", category: .dessert, orderCount: 0, ingredients: [], icon: "", isMostPopular: false))
     }
 }
